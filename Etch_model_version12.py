@@ -4,7 +4,7 @@ import matplotlib.cm as cmx
 import matplotlib.pyplot as plt
 import cv2
 import pyvista as pv
-import open3d as o3d
+#import open3d as o3d
 import time
 import etch_sim_utilities_v3 as utils
 import scipy.signal as sg
@@ -60,9 +60,17 @@ recipe_steps = {'step01':{'bosch':12,'iso':100,'cycles':4},
 # %% user inputs
 # load mask
 master_dir = 'C:/Users/Seth Cordts/OneDrive - Leland Stanford Junior University/TangLab/Papers/microDicer/Simulation/'
+master_dir = '/home/morioka/etch/tang/PythonDryEtchModel/'
+master_dir = './'
 
+#im_dir = master_dir + 'masks/'
+#im_file = 'w12c8r3.png'
 im_dir = master_dir + 'masks/'
 im_file = 'w12c8r3.png'
+im_file = 'fillet_sq_example_mask.png'
+#im_file = 'python_model_mask_v0.png'
+#im_file = 'python_model_mask_v1A.png'
+#im_file = 'python_model_mask_v2.png'
 
 
 horiz_to_vert_rate_ratio_sweep = [0.8]
@@ -146,7 +154,7 @@ for par in all_param_combos:
     
     # %% determine time step from cell size and etch rate
     t_start = 0 # seconds
-    t_step = np.int(np.floor(0.3*cell_size/vert_rate(0)))
+    t_step = np.int32(np.floor(0.3*cell_size/vert_rate(0)))
     
     
     param_dict = {"recipe_steps":recipe_steps, "im_file" :im_file, "pixel_um_conv =":pixel_um_conv, "theta_rot":theta_rot, "alpha_f":alpha_f,  "cell_size":cell_size, "horiz_to_vert_rate_ratio":horiz_to_vert_rate_ratio, "etch rate (a)":a, "etch rate(b)":b,"C_etch":C_etch,"t_step":t_step}
@@ -276,7 +284,7 @@ for par in all_param_combos:
     
     grid_shape = coords[0].shape
     
-    states = np.ones_like(coords[0],dtype=np.int) * 2
+    states = np.ones_like(coords[0],dtype=np.int32) * 2
     phis = np.ones_like(coords[0],dtype=np.float32) * 10
     
     norms = np.empty(grid_shape,dtype=object)
@@ -827,7 +835,7 @@ for par in all_param_combos:
                                          offset=0)
     plt.plot(s_diag, z_diag,'o')
     plt.plot(s, z)
-    
+
     # %% dummy
     from scipy.interpolate import griddata
     import scipy.signal as sg
@@ -859,7 +867,7 @@ for par in all_param_combos:
                        fillvalue=-10)
     zi = np.reshape(zi,X.shape)
     
-    
+
     
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
@@ -872,8 +880,8 @@ for par in all_param_combos:
     plt.subplot(122)
     plt.imshow(Z)
     
-    
-    
+
+
     # %% save files and plot final etch profile
     # pv.set_plot_theme("document")
     # written_keys = [key for key in save_phis.keys() if np.max(save_phis[key]) != 0]
