@@ -1,15 +1,15 @@
 # PythonDryEtchModel
 Python tool for modeling silicon etch profile from the dry plasma etching tool in the SNF
 
-# Environment
+# Requirement
 
-## OS : WSL2 + Ubunt20.04
+- WSL2 + Ubuntu20.04
+- Mobaxterm (or Xserver)
+- python 3.8.6
 
-## seutp
+# Installation
 
-To avoid QT issue, use the headless-mode opencv-python. (https://qiita.com/LemniscaterN/items/dfcda303677ca2ebf049)
-
-```
+```bash
 sudo apt install libopencv-dev
 pip install vtk opencv-python
 pip install numpy pyvista matplotlib scipy shapely
@@ -28,12 +28,29 @@ pip uninstall opencv-python opencv-contrib-python
 pip install  opencv-python-headless opencv-contrib-python-headless
 ```
 
-```
+- modified the procedure of https://github.com/cococastano/PythonDryEtchModel
+- To avoid QT issue, use the headless-mode opencv-python. (https://qiita.com/LemniscaterN/items/dfcda303677ca2ebf049)
+
+
+# Usage
+
+- Run Xserver and set DISPLAY environemnt variable properly in advance.
+
+```bash
 git clone https://github.com/cococastano/PythonDryEtchModel cococastano
 cp -rp cococastano/ExampleMasks masks
+running Xserver
+python Etch_model_version12.py
 ```
 
-# Run
+# Note
+ 
+TBD
+ 
+# Author
+ 
+This branch is modified by ymorioka@gmail.com
+ 
+# License
 
-1. running Xserver
-2. python Etch_model_version12.py
+TBD
