@@ -28,10 +28,10 @@ pip uninstall opencv-python opencv-contrib-python
 pip install  opencv-python-headless opencv-contrib-python-headless
 ```
 
-'''
+```
 git clone https://github.com/cococastano/PythonDryEtchModel cococastano
 cp -rp cococastano/ExampleMasks masks
-'''
+```
 
 # Run
 
