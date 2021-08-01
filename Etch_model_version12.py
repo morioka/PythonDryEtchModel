@@ -60,7 +60,6 @@ recipe_steps = {'step01':{'bosch':12,'iso':100,'cycles':4},
 # %% user inputs
 # load mask
 master_dir = 'C:/Users/Seth Cordts/OneDrive - Leland Stanford Junior University/TangLab/Papers/microDicer/Simulation/'
-master_dir = '/home/morioka/etch/tang/PythonDryEtchModel/'
 master_dir = './'
 
 #im_dir = master_dir + 'masks/'
